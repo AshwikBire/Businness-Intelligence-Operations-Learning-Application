@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub | Advanced Operations, BI, Power BI & Excel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --gray: #95a5a6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .active-link {
+            background-color: var(--accent);
+        }
+        
+        .active-link:hover {
+            background-color: #c0392b !important;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Content Section */
+        .content-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+        
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 0.5rem;
+            outline: none;
+            width: 250px;
+        }
+        
+        .resource-list {
+            list-style: none;
+        }
+        
+        .resource-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .resource-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .resource-item p {
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-item ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .resource-item li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Video Resources */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-content {
+            padding: 1.5rem;
+        }
+        
+        .video-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .video-content p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Certifications Section */
+        .certs-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .cert-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            background-color: #f8f9fa;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .cert-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-item p {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        .cert-provider {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* YouTube API Integration */
+        .api-section {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .api-controls {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .api-search {
+            display: flex;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .api-search input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .api-search button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .api-search button:hover {
+            background-color: #1a252f;
+        }
+        
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .resource-category, .resource-type {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .resource-category {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .resource-type {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .resource-card h4 {
+            margin: 0 0 0.8rem 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .resource-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        .resource-link {
+            display: block;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background-color: #2980b9;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .filters select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .chatbot-button:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .chatbot-button i {
+            font-size: 1.5rem;
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h3 {
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+        
+        .user-message {
+            background-color: var(--secondary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 0.8rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chatbot-input button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0 1rem;
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: #bbb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .search-box input {
+                width: 150px;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Learning Hub</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active-link" data-tab="home">Home</a></li>
+                    <li><a href="#operations" data-tab="operations">Operations</a></li>
+                    <li><a href="#business-intelligence" data-tab="business-intelligence">Business Intelligence</a></li>
+                    <li><a href="#power-bi" data-tab="power-bi">Power BI</a></li>
+                    <li><a href="#excel" data-tab="excel">Excel</a></li>
+                    <li><a href="#certifications" data-tab="certifications">Certifications</a></li>
+                    <li><a href="#videos" data-tab="videos">Videos</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Tab -->
+    <div id="home" class="tab-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Master Operations & Business Intelligence</h1>
+                    <p>Comprehensive learning resources for Operations Management, Business Intelligence, Power BI, Excel, and official certifications.</p>
+                    <a href="#operations" class="btn" data-tab="operations">Explore Content</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Welcome to Learning Hub</h2>
+                    <p>Your premier destination for mastering operations management, business intelligence, data visualization, and analytics tools.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>This platform is designed to help professionals and students develop expertise in operations management, business intelligence concepts, Microsoft Power BI, Excel analytics, and related certification paths.</p>
+                        <p>Our curriculum combines theoretical knowledge with practical applications, ensuring you gain skills that are directly applicable in real-world business scenarios.</p>
+                        <p>Whether you're looking to enhance your analytical capabilities, prepare for certifications, or transform raw data into actionable insights, our learning paths will guide you every step of the way.</p>
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Operations Tab -->
+    <div id="operations" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Advanced Operations Management</h2>
+                    <p>Deep learning resources for operations management professionals</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Operations Management Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search operations resources...">
+                        </div>
+                    </div>
+                    
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <h4>Supply Chain Network Design and Optimization</h4>
+                            <p>Supply chain network design involves determining the optimal configuration of facilities, transportation routes, and inventory positioning to meet customer service requirements at minimal cost. Advanced techniques include:</p>
+                            <ul>
+                                <li><strong>Mixed-integer programming for facility location decisions:</strong> Mathematical optimization technique that helps determine the optimal locations for facilities (plants, warehouses, distribution centers) considering both fixed and variable costs, capacity constraints, and service requirements.</li>
+                                <li><strong>Multi-echelon inventory optimization:</strong> Approach that optimizes inventory levels across the entire supply chain network rather than at individual locations, considering the interdependencies between different inventory levels.</li>
+                                <li><strong>Stochastic programming for demand uncertainty:</strong> Mathematical framework that incorporates uncertainty in demand, supply, and other parameters to create robust supply chain designs that perform well under various scenarios.</li>
+                                <li><strong>Risk pooling strategies and safety stock placement:</strong> Techniques that leverage statistical principles to reduce inventory requirements by consolidating demand variability and strategically placing safety stock in the network.</li>
+                                <li><strong>Greenfield and brownfield analysis:</strong> Evaluation of both new facility construction (greenfield) and existing facility modification (brownfield) options to determine the most cost-effective network design approach.</li>
+                            </ul>
+                            <p>Network optimization models typically consider fixed costs (facilities), variable costs (transportation, handling), service constraints (lead times, fill rates), and capacity constraints. Advanced implementations use specialized software like Llamasoft Supply Chain Guru, AnyLogistix, or custom optimization algorithms.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 120 min read</span>
+                                <span><i class="fas fa-tag"></i> Advanced</span>
+                            </div>
+                        </li>
+                        
+                        <li class="resource-item">
+                            <h4>Lean Six Sigma: DMAIC Framework and Statistical Tools</h4>
+                            <p>The DMAIC (Define, Measure, Analyze, Improve, Control) methodology provides a structured approach for process improvement. At advanced levels, practitioners utilize sophisticated statistical tools:</p>
+                            <ul>
+                                <li><strong>Define:</strong> Project charters, SIPOC diagrams (Suppliers, Inputs, Process, Outputs, Customers), Voice of the Customer analysis, project management plans, and stakeholder analysis.</li>
+                                <li><strong>Measure:</strong> Measurement system analysis (Gage R&R), process capability analysis (Cp, Cpk), data collection planning, operational definitions, baseline performance measurement, and process mapping.</li>
+                                <li><strong>Analyze:</strong> Hypothesis testing (t-tests, ANOVA), regression analysis, design of experiments (DOE), root cause analysis (5 Whys, fishbone diagrams), failure mode and effects analysis (FMEA), statistical process control, and value stream mapping.</li>
+                                <li><strong>Improve:</strong> Solution selection matrices, pilot studies, mistake-proofing (poka-yoke), implementation planning, cost-benefit analysis, and change management strategies.</li>
+                                <li><strong>Control:</strong> Statistical process control (control charts), control plans, standardization, documentation, training plans, and process ownership transition.</li>
+                            </ul>
+                            <p>Advanced practitioners focus on quantifying financial impact, sustaining improvements, and integrating Lean Six Sigma with other operational excellence frameworks. They utilize advanced statistical software like Minitab, JMP, or R for complex data analysis and visualization.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 90 min read</span>
+                                <span><i class="fas fa-tag"></i> Advanced</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Business Intelligence Tab -->
+    <div id="business-intelligence" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Advanced Business Intelligence</h2>
+                    <p>Deep learning resources for business intelligence professionals</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Business Intelligence Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search BI resources...">
+                        </div>
+                    </div>
+                    
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <h4>Data Warehouse Design: Advanced Dimensional Modeling</h4>
+                            <p>Advanced dimensional modeling techniques address complex business scenarios:</p>
+                            <ul>
+                                <li><strong>Slowly Changing Dimensions (SCD):</strong> Advanced implementations of Type 2 (history preserving), Type 3 (alternate realities), and hybrid approaches</li>
+                                <li><strong>Fact Table Design:</strong> Transactional, periodic snapshot, and accumulating snapshot fact tables</li>
+                                <li><strong>Advanced Dimension Patterns:</strong>
+                                    <ul>
+                                        <li>Junk dimensions for miscellaneous flags and indicators</li>
+                                        <li>Mini-dimensions for large rapidly changing dimensions</li>
+                                        <li>Role-playing dimensions for multiple date contexts</li>
+                                        <li>Shrunken dimensions for aggregated fact tables</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Bridge Tables:</strong> For many-to-many relationships and hierarchical structures</li>
+                                <li><strong>Advanced SQL Techniques:</strong> Complex joins, window functions, and recursive CTEs for hierarchical data</li>
+                            </ul>
+                            <p>Design considerations include query performance, load efficiency, and business usability.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 110 min read</span>
+                                <span><i class="fas fa-tag"></i> Advanced</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Power BI Tab -->
+    <div id="power-bi" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Advanced Power BI</h2>
+                    <p>Deep learning resources for Power BI professionals</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Power BI Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search Power BI resources...">
+                        </div>
+                    </div>
+                    
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <h4>Advanced Data Modeling in Power BI</h4>
+                            <p>Sophisticated data modeling techniques enhance Power BI solutions:</p>
+                            <ul>
+                                <li><strong>Relationship Design:</strong> Bi-directional filtering, limited relationships, and role-playing dimensions</li>
+                                <li><strong>Calculated Tables:</strong> Creating tables with DAX for specific modeling scenarios</li>
+                                <li><strong>Hierarchies and Unbalanced Hierarchies:</strong> Handling parent-child structures and ragged hierarchies</li>
+                                <li><strong>Advanced DAX Patterns:</strong>
+                                    <ul>
+                                        <li>Parameter tables for what-if analysis</li>
+                                        <li>Date and time intelligence for complex calendar requirements</li>
+                                        <li>Many-to-many relationships through bridge tables</li>
+                                        <li>ABC analysis and pareto calculations</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Performance Optimization:</strong> Managing cardinality, reducing table size, and optimizing relationships</li>
+                            </ul>
+                            <p>Advanced modelers use Tabular Editor for external model management and optimization.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 125 min read</span>
+                                <span><i class="fas fa-tag"></i> Advanced</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Excel Tab -->
+    <div id="excel" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Advanced Excel for Business Analytics</h2>
+                    <p>Deep learning resources for Excel professionals</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Excel Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search Excel resources...">
+                        </div>
+                    </div>
+                    
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <h4>Advanced Power Query for Data Transformation</h4>
+                            <p>Excel's Power Query provides sophisticated data transformation capabilities:</p>
+                            <ul>
+                                <li><strong>Complex Data Source Integration:</strong>
+                                    <ul>
+                                        <li>Multiple database connections with parameterized queries</li>
+                                        <li>Web API consumption with OAuth authentication</li>
+                                        <li>Combining data from heterogeneous sources</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Advanced M Language Techniques:</strong>
+                                    <ul>
+                                        <li>Custom functions with parameters</li>
+                                        <li>Error handling with try/otherwise</li>
+                                        <li>Recursive operations and complex data structures</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Performance Optimization:</strong>
+                                    <ul>
+                                        <li>Query folding to source systems</li>
+                                        <li>Data type optimization and column removal</li>
+                                        <li>Parallel data loading techniques</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Advanced Transformation Patterns:</strong>
+                                    <ul>
+                                        <li>Unpivoting complex matrix structures</li>
+                                        <li>Fuzzy matching and grouping similar values</li>
+                                        <li>Handling hierarchical data formats (JSON, XML)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>Advanced implementations leverage the Advanced Editor for direct M code manipulation and custom function development.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 130 min read</span>
+                                <span><i class="fas fa-tag"></i> Advanced</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Certifications Tab -->
+    <div id="certifications" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Professional Certification Preparation</h2>
+                    <p>Comprehensive resources for professional certifications</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Certification Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search certification resources...">
+                        </div>
+                    </div>
+                    
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <h4>Microsoft PL-300: Power BI Data Analyst Expert</h4>
+                            <p>The PL-300 certification validates expertise in Power BI data analysis:</p>
+                            <ul>
+                                <li><strong>Exam Domains:</strong>
+                                    <ul>
+                                        <li>Prepare the data (20-25%)</li>
+                                        <li>Model the data (25-30%)</li>
+                                        <li>Visualize and analyze the data (25-30%)</li>
+                                        <li>Deploy and maintain assets (20-25%)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Advanced Preparation Strategies:</strong>
+                                    <ul>
+                                        <li>Hands-on practice with complex data scenarios</li>
+                                        <li>Mastery of DAX for advanced calculations</li>
+                                        <li>Understanding of performance optimization techniques</li>
+                                        <li>Knowledge of deployment and governance best practices</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>The certification requires both theoretical knowledge and practical skills in data preparation, modeling, visualization, and deployment.</p>
+                            <div class="resource-meta">
+                                <span><i class="far fa-clock"></i> 180 min read</span>
+                                <span><i class="fas fa-tag"></i> Certification</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Videos Tab -->
+    <div id="videos" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Video Learning Resources</h2>
+                    <p>Enhance your learning experience with our curated collection of video tutorials and lectures.</p>
+                </div>
+                
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3>Learning Materials & Resources</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search learning materials..." id="resource-search">
+                        </div>
+                    </div>
+                    
+                    <div class="filters">
+                        <span>Filter by:</span>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="operations">Operations Management</option>
+                            <option value="bi">Business Intelligence</option>
+                            <option value="powerbi">Power BI</option>
+                            <option value="excel">Excel</option>
+                            <option value="python">Python</option>
+                            <option value="certification">Certifications</option>
+                        </select>
+                        
+                        <select id="type-filter">
+                            <option value="all">All Types</option>
+                            <option value="video">Video</option>
+                            <option value="article">Article</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="course">Course</option>
+                            <option value="documentation">Documentation</option>
+                        </select>
+                        
+                        <select id="level-filter">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    
+                    <div class="resources-grid" id="resources-container">
+                        <!-- Resources will be dynamically loaded here -->
+                    </div>
+                </div>
+                
+                <div class="api-section">
+                    <div class="container">
+                        <div class="section-title">
+                            <h2>Search for Learning Videos</h2>
+                            <p>Find educational content from YouTube on any topic you're interested in</p>
+                        </div>
+                        
+                        <div class="api-controls">
+                            <div class="api-search">
+                                <input type="text" id="youtube-search" placeholder="Search for learning videos (e.g., Power BI tutorials)">
+                                <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+                            </div>
+                        </div>
+                        
+                        <div class="search-filters">
+                            <label>
+                                <input type="checkbox" id="filter-educational" checked> Educational Content
+                            </label>
+                            <label>
+                                <input type="checkbox" id="filter-tutorial" checked> Tutorials
+                            </label>
+                            <label>
+                                <input type="checkbox" id="filter-recent"> Recent (Last year)
+                            </label>
+                        </div>
+                        
+                        <div class="results-info" id="results-info">
+                            Enter a search term to find videos
+                        </div>
+                        
+                        <div id="search-results" class="video-grid">
+                            <div class="placeholder-card">
+                                <i class="fas fa-video"></i>
+                                <p>Search for videos to display results here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/gX2F6q7QQs8" title="Operations Management Fundamentals" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Operations Management Fundamentals</h3>
+                            <p>Learn the core concepts of operations management, process optimization, and supply chain management.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 25 min</span>
+                                <span><i class="fas fa-user"></i> Education Edge</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/ky1eGvLF6C4" title="Business Intelligence Tutorial" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Business Intelligence Tutorial</h3>
+                            <p>Complete BI tutorial covering data warehousing, ETL processes, and visualization techniques.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 42 min</span>
+                                <span><i class="fas fa-user"></i> Simplilearn</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/AGrlC87Gbyc" title="Power BI Tutorial for Beginners" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Power BI Tutorial for Beginners</h3>
+                            <p>Get started with Microsoft Power BI and learn how to create interactive dashboards from scratch.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 38 min</span>
+                                <span><i class="fas fa-user"></i> Alex The Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/VlUH2U6hT2s" title="Advanced Excel Tutorial" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-content">
+                            <h3>Advanced Excel Tutorial</h3>
+                            <p>Master advanced Excel functions, formulas, and data analysis techniques for business intelligence.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-clock"></i> 45 min</span>
+                                <span><i class="fas fa-user"></i> Kevin Stratvert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Learning Hub</h3>
+                    <p>Your premier destination for mastering operations management, business intelligence, data visualization, and analytics tools.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" data-tab="home">Home</a></li>
+                        <li><a href="#operations" data-tab="operations">Operations</a></li>
+                        <li><a href="#business-intelligence" data-tab="business-intelligence">Business Intelligence</a></li>
+                        <li><a href="#power-bi" data-tab="power-bi">Power BI</a></li>
+                        <li><a href="#excel" data-tab="excel">Excel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@learninghub.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Learning Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3>Learning Hub Assistant</h3>
+                <span class="chatbot-close"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! I'm your learning assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message here...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Learning resources data
+        const learningResources = [
+            {
+                title: "Operations Management Fundamentals",
+                description: "Learn the core principles of operations management, process optimization, and efficiency improvement.",
+                category: "operations",
+                type: "course",
+                level: "beginner",
+                url: "https://www.coursera.org/learn/operations-management",
+                source: "Coursera",
+                duration: "12 hours"
+            },
+            {
+                title: "Business Intelligence Concepts",
+                description: "Master BI concepts, tools, and techniques for transforming data into actionable insights.",
+                category: "bi",
+                type: "article",
+                level: "intermediate",
+                url: "https://www.tutorialspoint.com/business_intelligence/index.htm",
+                source: "TutorialsPoint",
+                duration: "45 min read"
+            },
+            {
+                title: "Power BI Complete Guide",
+                description: "Comprehensive training on Power BI for data visualization and business analytics.",
+                category: "powerbi",
+                type: "tutorial",
+                level: "beginner",
+                url: "https://learn.microsoft.com/en-us/training/paths/create-use-analytics-reports-power-bi/",
+                source: "Microsoft Learn",
+                duration: "15 hours"
+            },
+            {
+                title: "Advanced Excel for Business Analytics",
+                description: "Master advanced Excel functions, formulas, and data analysis techniques.",
+                category: "excel",
+                type: "course",
+                level: "intermediate",
+                url: "https://www.udemy.com/course/excel-analytics/",
+                source: "Udemy",
+                duration: "8 hours"
+            },
+            {
+                title: "Python for Data Science",
+                description: "Learn Python programming for data analysis, visualization, and machine learning.",
+                category: "python",
+                type: "course",
+                level: "beginner",
+                url: "https://www.datacamp.com/tracks/data-scientist-with-python",
+                source: "DataCamp",
+                duration: "60 hours"
+            },
+            {
+                title: "SQL for Data Analysis",
+                description: "Complete guide to SQL for querying databases and performing data analysis.",
+                category: "bi",
+                type: "tutorial",
+                level: "intermediate",
+                url: "https://www.w3schools.com/sql/",
+                source: "W3Schools",
+                duration: "10 hours"
+            },
+            {
+                title: "Tableau Tutorial for Beginners",
+                description: "Learn Tableau from scratch and create interactive dashboards and visualizations.",
+                category: "bi",
+                type: "video",
+                level: "beginner",
+                url: "https://www.youtube.com/embed/7uG6-MhJXg0",
+                source: "YouTube",
+                duration: "28 min"
+            },
+            {
+                title: "Supply Chain Management Basics",
+                description: "Understand supply chain concepts, logistics, and inventory management principles.",
+                category: "operations",
+                type: "article",
+                level: "beginner",
+                url: "https://www.supplychainquarterly.com/articles/1050-basics-of-supply-chain-management",
+                source: "Supply Chain Quarterly",
+                duration: "30 min read"
+            },
+            {
+                title: "PL-300 Certification Guide",
+                description: "Complete preparation guide for Microsoft Power BI Data Analyst certification.",
+                category: "certification",
+                type: "documentation",
+                level: "advanced",
+                url: "https://learn.microsoft.com/en-us/certifications/exams/pl-300",
+                source: "Microsoft",
+                duration: "20 hours"
+            },
+            {
+                title: "Data Warehousing Concepts",
+                description: "Learn about data warehouse design, ETL processes, and dimensional modeling.",
+                category: "bi",
+                type: "course",
+                level: "intermediate",
+                url: "https://www.coursera.org/learn/data-warehousing",
+                source: "Coursera",
+                duration: "14 hours"
+            },
+            {
+                title: "Process Optimization Techniques",
+                description: "Discover methodologies like Lean, Six Sigma, and Kaizen to streamline operations.",
+                category: "operations",
+                type: "article",
+                level: "intermediate",
+                url: "https://www.isixsigma.com/methodology/process-optimization/",
+                source: "iSixSigma",
+                duration: "40 min read"
+            },
+            {
+                title: "Excel Power Query Tutorial",
+                description: "Learn how to use Power Query to import, transform, and clean data in Excel.",
+                category: "excel",
+                type: "video",
+                level: "intermediate",
+                url: "https://www.youtube.com/embed/5X5Mc+7nCPs",
+                source: "YouTube",
+                duration: "35 min"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Tab Navigation
+            const tabLinks = document.querySelectorAll('.nav-links a, .footer-links a');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab link
+                    tabLinks.forEach(link => link.classList.remove('active-link'));
+                    this.classList.add('active-link');
+                    
+                    // Show selected tab content
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Chatbot functionality
+            const chatbotButton = document.querySelector('.chatbot-button');
+            const chatbotWindow = document.querySelector('.chatbot-window');
+            const chatbotClose = document.querySelector('.chatbot-close');
+            const chatInput = document.querySelector('.chatbot-input input');
+            const chatSend = document.querySelector('.chatbot-input button');
+            const chatMessages = document.querySelector('.chatbot-messages');
+            
+            chatbotButton.addEventListener('click', function() {
+                chatbotWindow.style.display = 'flex';
+            });
+            
+            chatbotClose.addEventListener('click', function() {
+                chatbotWindow.style.display = 'none';
+            });
+            
+            function addMessage(text, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            chatSend.addEventListener('click', function() {
+                if (chatInput.value.trim() !== '') {
+                    addMessage(chatInput.value, true);
+                    
+                    // Bot response
+                    setTimeout(function() {
+                        const userMessage = chatInput.value.toLowerCase();
+                        let botResponse = '';
+                        
+                        if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('hey')) {
+                            botResponse = 'Hello there! How can I help you with your learning journey today?';
+                        } else if (userMessage.includes('course') || userMessage.includes('learn')) {
+                            botResponse = 'We offer courses in Operations Management, Business Intelligence, Power BI, Excel, and more. Which area are you interested in?';
+                        } else if (userMessage.includes('certification') || userMessage.includes('certificate')) {
+                            botResponse = 'We provide preparation resources for various certifications including Microsoft Power BI, Google Data Analytics, and more.';
+                        } else if (userMessage.includes('contact') || userMessage.includes('help')) {
+                            botResponse = 'You can reach us through the contact form or via email at info@learninghub.com. We typically respond within 24 hours.';
+                        } else {
+                            botResponse = 'I\'m still learning. Could you please rephrase your question or ask about our courses, certifications, or learning resources?';
+                        }
+                        
+                        addMessage(botResponse, false);
+                    }, 1000);
+                    
+                    chatInput.value = '';
+                }
+            });
+            
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    chatSend.click();
+                }
+            });
+            
+            // Search functionality
+            const searchInputs = document.querySelectorAll('.search-box input');
+            
+            searchInputs.forEach(input => {
+                input.addEventListener('keyup', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const resourceItems = this.closest('.content-container').querySelectorAll('.resource-item');
+                    
+                    resourceItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Render resources
+            renderResources(learningResources);
+            
+            // Add event listeners to filters
+            document.getElementById('category-filter').addEventListener('change', filterResources);
+            document.getElementById('type-filter').addEventListener('change', filterResources);
+            document.getElementById('level-filter').addEventListener('change', filterResources);
+            document.getElementById('resource-search').addEventListener('input', filterResources);
+            
+            // YouTube API functionality
+            const searchBtn = document.getElementById('search-btn');
+            const youtubeSearch = document.getElementById('youtube-search');
+            const resultsContainer = document.getElementById('search-results');
+            const resultsInfo = document.getElementById('results-info');
+            
+            searchBtn.addEventListener('click', searchVideos);
+            youtubeSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchVideos();
+                }
+            });
+            
+            // Initialize with a default search
+            youtubeSearch.value = 'Power BI tutorial';
+            searchVideos();
+        });
+
+        // Function to render resources
+        function renderResources(resources) {
+            const container = document.getElementById('resources-container');
+            container.innerHTML = '';
+            
+            if (resources.length === 0) {
+                container.innerHTML = '<p class="no-results">No resources found matching your criteria.</p>';
+                return;
+            }
+            
+            resources.forEach(resource => {
+                const resourceCard = document.createElement('div');
+                resourceCard.className = 'resource-card';
+                resourceCard.innerHTML = `
+                    <div class="resource-header">
+                        <span class="resource-category">${resource.category}</span>
+                        <span class="resource-type">${resource.type}</span>
+                    </div>
+                    <h4>${resource.title}</h4>
+                    <p>${resource.description}</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> ${resource.duration}</span>
+                        <span><i class="fas fa-signal"></i> ${resource.level}</span>
+                        <span><i class="fas fa-source"></i> ${resource.source}</span>
+                    </div>
+                    <a href="${resource.url}" target="_blank" class="resource-link">Access Resource</a>
+                `;
+                container.appendChild(resourceCard);
+            });
+        }
+
+        // Function to filter resources
+        function filterResources() {
+            const categoryValue = document.getElementById('category-filter').value;
+            const typeValue = document.getElementById('type-filter').value;
+            const levelValue = document.getElementById('level-filter').value;
+            const searchValue = document.getElementById('resource-search').value.toLowerCase();
+            
+            const filteredResources = learningResources.filter(resource => {
+                return (categoryValue === 'all' || resource.category === categoryValue) &&
+                       (typeValue === 'all' || resource.type === typeValue) &&
+                       (levelValue === 'all' || resource.level === levelValue) &&
+                       (resource.title.toLowerCase().includes(searchValue) || 
+                        resource.description.toLowerCase().includes(searchValue));
+            });
+            
+            renderResources(filteredResources);
+        }
+
+        // Search videos function
+        function searchVideos() {
+            const query = document.getElementById('youtube-search').value.trim();
+            
+            if (!query) {
+                showError('Please enter a search term');
+                return;
+            }
+            
+            // Show loading state
+            document.getElementById('search-results').innerHTML = `
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Searching for videos...</p>
+                </div>
+            `;
+            
+            // In a real implementation, you would use the YouTube API here
+            // For demonstration, we'll simulate a search with some popular videos
+            setTimeout(() => {
+                const simulatedResults = [
+                    {
+                        id: { videoId: 'gX2F6q7QQs8' },
+                        snippet: {
+                            title: `${query} - Comprehensive Tutorial`,
+                            description: `Learn all about ${query} in this comprehensive tutorial that covers all the basics and advanced concepts.`,
+                            channelTitle: 'Learning Hub Channel',
+                            publishedAt: new Date().toISOString()
+                        }
+                    },
+                    {
+                        id: { videoId: 'ky1eGvLF6C4' },
+                        snippet: {
+                            title: `Advanced ${query} Techniques`,
+                            description: `Take your ${query} skills to the next level with these advanced techniques and tips from industry experts.`,
+                            channelTitle: 'Tech Education',
+                            publishedAt: new Date(Date.now() - 30*24*60*60*1000).toISOString()
+                        }
+                    },
+                    {
+                        id: { videoId: 'AGrlC87Gbyc' },
+                        snippet: {
+                            title: `${query} for Beginners`,
+                            description: `New to ${query}? This beginner-friendly tutorial will get you up to speed in no time.`,
+                            channelTitle: 'Beginner Tutorials',
+                            publishedAt: new Date(Date.now() - 60*24*60*60*1000).toISOString()
+                        }
+                    }
+                ];
+                
+                displayResults(simulatedResults, query);
+            }, 1500);
+        }
+        
+        // Display results function
+        function displayResults(videos, query) {
+            if (!videos || videos.length === 0) {
+                document.getElementById('results-info').textContent = `No videos found for "${query}"`;
+                document.getElementById('search-results').innerHTML = '<div class="error-message">No videos found. Try a different search term.</div>';
+                return;
+            }
+            
+            document.getElementById('results-info').textContent = `Found ${videos.length} videos for "${query}"`;
+            
+            // Clear previous results
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+            
+            // Add each video to the results
+            videos.forEach(video => {
+                const videoId = video.id.videoId;
+                const title = video.snippet.title;
+                const description = video.snippet.description;
+                const channel = video.snippet.channelTitle;
+                const publishedAt = new Date(video.snippet.publishedAt).toLocaleDateString();
+                
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.innerHTML = `
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/${videoId}" title="${title}" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-calendar-alt"></i> ${publishedAt}</span>
+                        </div>
+                        <div class="video-channel">
+                            <i class="fas fa-user"></i> ${channel}
+                        </div>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(videoCard);
+            });
+        }
+        
+        // Show error function
+        function showError(message) {
+            document.getElementById('results-info').textContent = 'Error';
+            document.getElementById('search-results').innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
